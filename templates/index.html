@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Советчик игр с ИИ</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>AI игросоветчик</h1>
+    <p>Введите фразу о своих предпочтениях в играх</p>
+    <form method="post">
+        <label for="message">Опиши свои игровые предпочтения</label>
+        <textarea name="message" id="message" cols="50" rows="4" required
+                  placeholder="Например: люблю игры на выживание, RPG с открытым миром, стратегии">{{ user_text }}</textarea>
+        <button type="submit">Получить рекомендацию</button>
+    </form>
+
+    {% if recommendation %}
+    <div class="result">
+        <h3>Рекомендация</h3>
+        <p>{{ recommendation|safe }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
